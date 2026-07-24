@@ -20,6 +20,7 @@
     "react-hook-form": "^7.82.0",
     "react-router-dom": "^7.18.1",
     "recharts": "^3.10.0",
+    "tesseract.js": "^7.0.0",
     "zod": "^4.4.3"
   },
   "devDependencies": {
