@@ -7,7 +7,6 @@ import {
   Position,
   Node,
   Edge,
-  NodeProps,
   useNodesState,
   useEdgesState,
 } from '@xyflow/react';
@@ -39,7 +38,8 @@ interface KnowledgeGraphViewerProps {
   onNodeSelect?: (nodeId: string, data: GraphNodeData) => void;
 }
 
-export type CustomNode = Node<GraphNodeData, 'customNode'>;
+// Custom Node structure compatible with @xyflow/react v12
+export type CustomNode = Node<GraphNodeData>;
 
 // =============================================================================
 // 2. DAGRE HIERARCHICAL LAYOUT ENGINE UTILITY
@@ -88,7 +88,8 @@ const getLayoutedElements = (
 // 3. CUSTOM REACT FLOW NODE COMPONENT
 // =============================================================================
 
-const CustomGraphNode: React.FC<NodeProps<CustomNode>> = ({ data }) => {
+// Let TypeScript infer node props directly
+const CustomGraphNode = ({ data }: { data: GraphNodeData }) => {
   const getSeverityStyle = (severity: string) => {
     switch (severity) {
       case 'CRITICAL':
