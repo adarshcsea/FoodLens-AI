@@ -5,10 +5,10 @@ import {
   Controls,
   Handle,
   Position,
-  Node,
-  Edge,
   useNodesState,
   useEdgesState,
+  type Node,
+  type Edge,
 } from '@xyflow/react';
 import dagre from 'dagre';
 import '@xyflow/react/dist/style.css';
