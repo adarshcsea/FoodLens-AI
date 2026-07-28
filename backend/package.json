@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "framer-motion": "^12.42.2",
+    "lucide-react": "^1.26.0",
+    "recharts": "^3.10.0",
+    "tesseract.js": "^7.0.0"
+  }
+}

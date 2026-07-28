@@ -13,8 +13,11 @@ import java.util.UUID;
 public interface IngredientFuzzyRepository extends JpaRepository<IngredientEntity, UUID> {
 
     @Query(value = """
-        SELECT DISTINCT i.id, i.canonical_name, i.ins_e_code, i.is_hidden_sugar, 
-               i.processing_level::text,
+        SELECT DISTINCT i.id, 
+               i.canonical_name, 
+               i.ins_e_number, 
+               i.is_hidden_sugar, 
+               i.nova_group::text AS processing_level,
                GREATEST(
                    similarity(i.canonical_name, :token),
                    COALESCE((SELECT MAX(similarity(a.alias_name, :token)) 
@@ -26,7 +29,7 @@ public interface IngredientFuzzyRepository extends JpaRepository<IngredientEntit
                SELECT 1 FROM ingredient_aliases a 
                WHERE a.ingredient_id = i.id AND similarity(a.alias_name, :token) >= :threshold
            )
-           OR i.ins_e_code = :token
+           OR LOWER(i.ins_e_number) = LOWER(:token)
         ORDER BY match_score DESC
         LIMIT 5
         """, nativeQuery = true)

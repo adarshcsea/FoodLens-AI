@@ -1,0 +1,18 @@
+# Node / Frontend
+node_modules/
+.vite/
+dist/
+build/
+*.log
+
+# Java / Spring Boot / Maven
+target/
+.mvn/wrapper/maven-wrapper.jar
+*.class
+*.jar
+
+# IDE & OS Files
+.vscode/
+.idea/
+.DS_Store
+*.tmp
