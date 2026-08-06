@@ -7,7 +7,7 @@ FROM ingredients i
 WHERE similarity(i.canonical_name, 'High Fructos Corn Sirup') > 0.3
 
 UNION
- 
+
 SELECT 
     i.id,
     i.canonical_name,
