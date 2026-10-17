@@ -9,12 +9,4 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class MatchRequest {
     private String rawText;
-
-    public String getRawText() {
-        return rawText;
-    }
-
-    public void setRawText(String rawText) {
-        this.rawText = rawText;
-    }
 }

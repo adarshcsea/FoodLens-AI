@@ -21,7 +21,7 @@ export interface HealthScorePayload {
 }
 
 export interface MatchedIngredient {
-  id: string;
+  ingredientId: string;
   matchedName: string;
   matchConfidence: number;
   isAdditive: boolean;

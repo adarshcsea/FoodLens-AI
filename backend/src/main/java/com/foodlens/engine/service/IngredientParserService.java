@@ -37,16 +37,14 @@ public class IngredientParserService {
                 if (!matchedIds.contains(id)) {
                     matchedIds.add(id);
 
-                    // Must match MatchedIngredientDTO fields in exact order:
-                    // (rawToken, ingredientId, matchedName, matchConfidence, isAdditive, isHiddenSugar, isAllergen)
                     results.add(new MatchedIngredientDTO(
                         normalizedToken,                         // rawToken (String)
                         id,                                      // ingredientId (UUID)
                         (String) bestMatch[1],                   // matchedName (String)
                         ((Number) bestMatch[2]).doubleValue(),   // matchConfidence (Double)
-                        bestMatch[3] != null && (Boolean) bestMatch[3], // isAdditive (Boolean)
-                        bestMatch[4] != null && (Boolean) bestMatch[4], // isHiddenSugar (Boolean)
-                        bestMatch[5] != null && (Boolean) bestMatch[5]  // isAllergen (Boolean)
+                        (Boolean) bestMatch[3],                  // isAdditive (Boolean)
+                        (Boolean) bestMatch[4],                  // isHiddenSugar (Boolean)
+                        (Boolean) bestMatch[5]                   // isAllergen (Boolean)
                     ));
                 }
             }

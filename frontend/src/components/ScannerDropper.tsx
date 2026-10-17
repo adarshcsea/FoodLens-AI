@@ -96,9 +96,12 @@ export const ScannerDropper: React.FC = () => {
         throw new Error(`Server returned status ${response.status}: Failed to match ingredients.`);
       }
 
-      const matchedIngredients = await response.json();
+      const data = await response.json();
       setProgress(100);
-      setScanResults(extractedText, matchedIngredients);
+      setScanResults(extractedText, data.matchedIngredients);
+      if (data.healthScores) {
+        useScanStore.getState().setHealthScores(data.healthScores);
+      }
 
     } catch (err: any) {
       console.error('OCR Scanning pipeline error:', err);

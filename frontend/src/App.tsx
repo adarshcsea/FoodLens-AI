@@ -41,7 +41,7 @@ export const App: React.FC = () => {
   // Set default selected ingredient when scan finishes
   useEffect(() => {
     if (hasScanResults && !selectedIngredientId) {
-      setSelectedIngredientId(matchedIngredients[0].id);
+      setSelectedIngredientId(matchedIngredients[0].ingredientId);
     }
   }, [hasScanResults, selectedIngredientId, matchedIngredients, setSelectedIngredientId]);
 

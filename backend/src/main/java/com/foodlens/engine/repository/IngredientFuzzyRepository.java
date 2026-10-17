@@ -15,14 +15,13 @@ public interface IngredientFuzzyRepository extends JpaRepository<IngredientEntit
     @Query(value = """
         SELECT DISTINCT i.id, 
                i.canonical_name, 
-               i.ins_e_number, 
-               i.is_hidden_sugar, 
-               i.nova_group::text AS processing_level,
                GREATEST(
                    similarity(i.canonical_name, :token),
                    COALESCE((SELECT MAX(similarity(a.alias_name, :token)) 
                              FROM ingredient_aliases a WHERE a.ingredient_id = i.id), 0.0)
-               ) AS match_score
+               ) AS match_score,
+               i.is_additive,
+               i.is_hidden_sugar,`r`n               i.is_allergen
         FROM ingredients i
         WHERE similarity(i.canonical_name, :token) >= :threshold
            OR EXISTS (
