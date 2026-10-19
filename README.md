@@ -87,7 +87,7 @@ I am from a tier 3 college and they asked my class to register for MSME.
 
 I registered it out of FOMO (I regret it) but I was really not qualified to do so.
 
-I chose this topic and started building it. I had built many static web games and got too much over myself.
+I chose this topic and started building it. I had built many static web games and bit off more than I could chew.
 
 I started using AI for this. It felt great and fulfilling that I was building something myself (AI not me) and I felt proud about it.
 
