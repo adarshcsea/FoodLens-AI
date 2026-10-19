@@ -2,7 +2,6 @@ package com.foodlens.engine.service;
 
 import com.foodlens.engine.dto.KnowledgeGraphResponseDTO;
 import com.foodlens.engine.repository.KnowledgeGraphRepository;
-import com.foodlens.engine.service.KnowledgeGraphService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

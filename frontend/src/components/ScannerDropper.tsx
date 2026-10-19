@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Camera, RefreshCw, UploadCloud, AlertCircle } from 'lucide-react';
 import { preprocessImage } from '../utils/imagePreprocessor';
 import { useScanStore } from '../store/useScanStore';
-import { createWorker } from 'tesseract.js';
+import { createWorker, type Worker } from 'tesseract.js';
 
 // Environment-aware Base API URL
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080/api/v1';
@@ -53,7 +53,7 @@ export const ScannerDropper: React.FC = () => {
     const previewUrl = URL.createObjectURL(file);
     setPreview(previewUrl);
 
-    let worker: Tesseract.Worker | null = null;
+    let worker: Worker | null = null;
 
     try {
       // Step 1: Pre-process image on Canvas
@@ -65,7 +65,8 @@ export const ScannerDropper: React.FC = () => {
 
       // Step 2: Initialize Web Worker for OCR (Tesseract.js v5 API)
       setProgress(35);
-      const worker = await createWorker('eng', undefined, {        logger: (m) => {
+      worker = await createWorker('eng', undefined, {
+        logger: (m) => {
           if (m.status === 'recognizing text') {
             setProgress(35 + Math.floor(m.progress * 50));
           }
@@ -78,6 +79,7 @@ export const ScannerDropper: React.FC = () => {
 
       // Clean up worker memory
       await worker.terminate();
+      worker = null;
 
       if (!extractedText || extractedText.length < 5) {
         throw new Error('Could not detect readable text on label. Ensure sharp focus and good lighting.');
@@ -96,11 +98,11 @@ export const ScannerDropper: React.FC = () => {
         throw new Error(`Server returned status ${response.status}: Failed to match ingredients.`);
       }
 
-      const data = await response.json();
+      const responseData = await response.json();
       setProgress(100);
-      setScanResults(extractedText, data.matchedIngredients);
-      if (data.healthScores) {
-        useScanStore.getState().setHealthScores(data.healthScores);
+      setScanResults(extractedText, responseData.matchedIngredients);
+      if (responseData.healthScores) {
+        useScanStore.getState().setHealthScores(responseData.healthScores);
       }
 
     } catch (err: any) {
@@ -112,7 +114,7 @@ export const ScannerDropper: React.FC = () => {
       setProgress(0);
 
       if (worker) {
-        await (worker as Tesseract.Worker).terminate();
+        await worker.terminate();
       }
     }
   };

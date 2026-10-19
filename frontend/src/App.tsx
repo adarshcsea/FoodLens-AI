@@ -6,7 +6,6 @@ import {
   BookOpen,
   Sparkles,
   ShieldCheck,
-  AlertCircle,
   Users,
   Bot,
   RefreshCw,
@@ -253,7 +252,7 @@ export const App: React.FC = () => {
                         className="bg-slate-900 text-slate-200 text-xs font-semibold border border-slate-800 rounded-lg px-3 py-1.5 outline-none focus:border-indigo-500"
                       >
                         {matchedIngredients.map((item) => (
-                          <option key={item.id} value={item.id}>
+                          <option key={item.ingredientId} value={item.ingredientId}>
                             {item.matchedName}
                           </option>
                         ))}

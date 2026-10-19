@@ -9,7 +9,6 @@ import {
   PolarRadiusAxis,
 } from 'recharts';
 import {
-  AlertTriangle,
   ShieldAlert,
   Flame,
   HeartPulse,
