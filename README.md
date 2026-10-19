@@ -75,3 +75,42 @@ FoodLens-AI/
             └── Dashboard.tsx
 
 ```
+
+
+
+## What I have learned building this ( Might be useful for anyone who reads it. I hope nobody reads it...)
+
+```
+First of all, let me start on why I created this project-
+
+I am from a tier 3 college and they asked my class to register for MSME.
+
+I registered it out of FOMO (I regret it) but I was really not qualified to do so.
+
+I chose this topic and started building it. I had built many static web games and got too much over myself.
+
+I started using AI for this. It felt great and fulfilling that I was building something myself (AI not me) and I felt proud about it.
+
+I started flexing it to my friends and some faculty with this project.
+
+Now, the project was built and the database was connected. I had used 4-5 dependencies for this.
+
+Then, the nightmare started. There were errors. Some were small, but instead of fixing them, I got into a spiral where correcting codes generated more errors than there were initially.
+
+I have spent an unnecessarily excruciating amount of time in debugging it. I had gemini pro plan because of 'JIO' recharge and I have used it somewhat productively I guess.
+
+Like, I would take screenshots of errors and stuff I did not know and upload them to Gemini to fix them.
+
+It all ended up quite bad.
+
+I am writing this because I am dropping this project. I am scared to even touch it right now.
+
+What this thought me was to focus on fundamentals right now. I am in the third semester of my BE.cse journey and I have my exams in the next 3 days.
+
+"Quality will always beat quantity in the long run."
+
+Having fundamentals clear gives a very lethal edge that vibe-coding can never provide.
+
+I got a lesson and I will remember it.
+
+```
